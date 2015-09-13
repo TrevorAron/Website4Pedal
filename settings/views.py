@@ -22,6 +22,20 @@ def index(request):
     context = {'effect_list': tuple_list, 'bird': twitter}
     return render(request, 'settings/index.html', context)
 
+def examine(request):
+    effect_list = Effect.objects.order_by('id')
+    bird = Twitter.objects.get(pk=1)
+    num = len(effect_list)
+    output = "" + str(num) + "\n"
+    for effect in effect_list:
+        output += effect.name + "\n"
+        output += str(effect.status) + "\n"
+        output += str(effect.param) + "\n"
+    output += "Twitter" + "\n"
+    output += str(bird.status) + "\n"
+    output += str(bird.modifier) + "\n"
+    return HttpResponse(output)
+
 def submit(request):
     bird = Twitter.objects.get(pk=1)
     try:
