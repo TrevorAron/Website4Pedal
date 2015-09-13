@@ -41,13 +41,6 @@
           </button>
           <a class="navbar-brand">IO Filter</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="http://getbootstrap.com/examples/navbar-static-top/#">Home</a></li>
-            <li><a href="http://getbootstrap.com/examples/navbar-static-top/#about">About</a></li>
-            <li class="active"><a href="http://getbootstrap.com/examples/navbar-static-top/#contact">Change Settings</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </nav>
 
@@ -72,24 +65,25 @@
                     {% if effect.status %}
                         <span style="font-size:5.5em;" class="glyphicon glyphicon-ok-circle"></span>
                     {% else %}
-                        <span style="font-size:5.5em;" class="glyphicon glyphicon-ok-circle"></span>
+                        <span style="font-size:5.5em;" class="glyphicon glyphicon-remove-circle"></span>
                     {% endif %}
  
                     <div class="range">
-                        <input type="range" name={{"range"|add:effect.id }} min="1" max="100" value="50">
+                        <input type="range" name="{{"range"|add:effect.name}}" min="1" max="100" value={{effect.param}}>
                     </div>
                     <div class="radio">
                         <label class="radio-inline">
-                            <input type="radio" name={{"status|add:effect.id}}" value="OFF"> 
+                            <input type="radio" name="{{"status"|add:effect.name}}" value="OFF"> 
                             <span style="font-size:3.5em;" class="glyphicon glyphicon-remove-circle"></span>
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name={{"status"|add:effect.id}}" value="ON">
+                            <input type="radio" name="{{"status"|add:effect.name}}" value="ON">
                             <span style="font-size:3.5em;" class="glyphicon glyphicon-ok-circle"></span>
                     </label>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
         {% endfor %}
         <div class="row">
@@ -101,7 +95,7 @@
                   {% if bird.status %}
                       <span style="font-size:5.5em;" class="glyphicon glyphicon-ok-circle"></span>
                   {% else %}
-                      <span style="font-size:5.5em;" class="glyphicon glyphicon-ok-circle"></span>
+                      <span style="font-size:5.5em;" class="glyphicon glyphicon-remove-circle"></span>
                   {% endif %}
  
                   <div class="radio">
@@ -120,7 +114,18 @@
           <div class="col-md-4">
           </div>
         </div>
-            <input type="submit" value="Submit"/>
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <input type="submit" value="Submit"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+
+            </div>
         </form>
     </div>
 
